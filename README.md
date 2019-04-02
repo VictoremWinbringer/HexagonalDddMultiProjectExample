@@ -1,0 +1,2 @@
+# HexagonalDddMultiProjectExample
+RPC, MongoDB, Sqlite
