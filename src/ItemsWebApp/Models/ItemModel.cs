@@ -5,7 +5,7 @@ namespace ItemsWebApp.Models
 {
     public class ItemModel
     {
-        [StringLength(255, MinimumLength = 4)]
+        [Display(Name = "Текст")]
         public string Text { get; set; }
 
         public ItemModel(ItemEntity entity)

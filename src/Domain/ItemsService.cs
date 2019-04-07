@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Domain
@@ -24,6 +25,8 @@ namespace Domain
 
         public void Add(ItemEntity entity)
         {
+            if(string.IsNullOrWhiteSpace(entity?.Text) || entity.Text.Length < 4 || entity.Text.Length > 255)
+                throw new ArgumentException("Text");
             _repository.Save(entity);
         }
     }
