@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using ItemsService.Domain;
+using Domain;
 
 namespace ItemsService.Controllers
 {

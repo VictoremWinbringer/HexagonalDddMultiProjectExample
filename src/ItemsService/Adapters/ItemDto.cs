@@ -1,4 +1,4 @@
-using ItemsService.Domain;
+using Domain;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -9,7 +9,7 @@ namespace ItemsService.Adapters
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        
+
         public string Text { get; set; }
 
         public ItemDto(ItemEntity entity)

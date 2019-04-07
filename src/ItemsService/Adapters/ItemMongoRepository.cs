@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using ItemsService.Domain;
+using Domain;
 using MongoDB.Driver;
 
 namespace ItemsService.Adapters
