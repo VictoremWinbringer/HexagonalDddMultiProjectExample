@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using Domain;
 using ItemsWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,25 +10,26 @@ namespace ItemsWebApp.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly List<ItemModel> _items;
-        public ItemsController()
+        private readonly IItemsService _service;
+
+        public ItemsController(IItemsService service)
         {
-            _items = new List<ItemModel>()
-            {
-                new ItemModel(){Text = "Hello World"}
-            };
+            _service = service;
         }
-        
+
         public IActionResult Index()
         {
-            return
-            View(_items);
+            var items = _service
+                .GetAll()
+                .Select(item => new ItemModel(item))
+                .ToList();
+            return View(items);
         }
 
         [HttpPost]
         public IActionResult Add([FromForm] ItemModel item)
         {
-            _items.Add(item);
+            _service.Add(item.ToEntity());
             return RedirectToAction(nameof(Index));
         }
     }
