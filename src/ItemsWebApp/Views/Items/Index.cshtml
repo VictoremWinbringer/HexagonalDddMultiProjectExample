@@ -1,0 +1,22 @@
+@using System.Linq
+@model List<ItemModel>
+
+@{
+    ViewBag.Title = "Items";
+    Layout = "_Layout";
+}
+
+<h2>Items</h2>
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @item.Text
+        </li>
+    </ul>
+}
+
+<form asp-action="Add" method="post">
+    <input type="text" name="Text"/>
+    <input type="submit" value="Add"/>
+</form>
