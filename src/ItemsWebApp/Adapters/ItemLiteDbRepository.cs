@@ -17,7 +17,7 @@ namespace ItemsWebApp.Adapters
 
         public List<ItemEntity> GetAll()
         {
-            return _db.GetCollection<ItemDto>()
+            return _db.GetCollection<Item>()
                 .FindAll()
                 .Select(item => item.ToEntity())
                 .ToList();
@@ -25,8 +25,8 @@ namespace ItemsWebApp.Adapters
 
         public void Save(ItemEntity entity)
         {
-            _db.GetCollection<ItemDto>()
-                .Insert(new ItemDto(entity));
+            _db.GetCollection<Item>()
+                .Insert(new Item(entity));
         }
     }
 }

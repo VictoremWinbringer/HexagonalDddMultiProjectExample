@@ -1,22 +1,20 @@
 using Domain;
-using LiteDB;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-namespace ItemsWebApp.Adapters
+namespace ItemsService.Adapters
 {
-    public class ItemDto
+    public class Item
     {
-        public ObjectId Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
         public string Text { get; set; }
 
-        public ItemDto(ItemEntity entity)
+        public Item(ItemEntity entity)
         {
             this.Text = entity.Text;
-        }
-
-        public ItemDto()
-        {
-            
         }
 
         // Use AutoMapper for this in big project.
