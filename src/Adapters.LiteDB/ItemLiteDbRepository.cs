@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain;
 using LiteDB;
 
-namespace ItemsWebApp.Adapters
+namespace Adapters.LiteDB
 {
     public class ItemLiteDbRepository : IItemRepository
     {

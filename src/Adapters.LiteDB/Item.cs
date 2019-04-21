@@ -1,7 +1,7 @@
 using Domain;
 using LiteDB;
 
-namespace ItemsWebApp.Adapters
+namespace Adapters.LiteDB
 {
     public class Item
     {
