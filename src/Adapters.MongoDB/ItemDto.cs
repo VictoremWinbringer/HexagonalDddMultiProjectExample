@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Adapters.MongoDB
 {
+    [BsonIgnoreExtraElements]
     public class ItemDto
     {
         public ItemDto(Item entity)
