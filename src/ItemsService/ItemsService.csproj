@@ -53,7 +53,8 @@
 
 
     <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Adapters.MongoDB\Adapters.MongoDB.csproj" />
+      <ProjectReference Include="..\ItemService.Lib\ItemService.Lib.csproj" />
     </ItemGroup>
 
 </Project>

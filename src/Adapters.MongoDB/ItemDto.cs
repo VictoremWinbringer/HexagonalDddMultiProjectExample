@@ -1,29 +1,26 @@
-using Domain;
+using ItemService.Lib.Domain;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace ItemsService.Adapters
+namespace Adapters.MongoDB
 {
-    public class Item
+    public class ItemDto
     {
+        public ItemDto(Item entity)
+        {
+            Text = entity.Text.Value;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
         public string Text { get; set; }
 
-        public Item(ItemEntity entity)
-        {
-            this.Text = entity.Text;
-        }
-
         // Use AutoMapper for this in big project.
-        public ItemEntity ToEntity()
+        public Item ToEntity()
         {
-            return new ItemEntity
-            {
-                Text = this.Text
-            };
+            return new Item(Text);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Adapters.LiteDB;
-using Domain;
+using ItemService.Lib.Adapters;
+using ItemService.Lib.Ports;
 using LiteDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +32,7 @@ namespace ItemsWebApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddScoped<LiteDatabase>(f => new LiteDatabase("Items.db"));
+            services.AddScoped(f => new LiteDatabase("Items.db"));
             services.AddTransient<IItemRepository, ItemLiteDbRepository>();
             services.AddTransient<IItemsService, ItemsService>();
         }
@@ -46,8 +47,8 @@ namespace ItemsWebApp
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Items}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Items}/{action=Index}/{id?}");
             });
         }
     }

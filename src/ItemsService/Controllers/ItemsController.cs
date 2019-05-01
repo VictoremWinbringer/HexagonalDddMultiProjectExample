@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Domain;
+using ItemsService.Models;
+using ItemService.Lib.Ports;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItemsService.Controllers
@@ -13,8 +14,8 @@ namespace ItemsService.Controllers
         {
             _service = service;
         }
-        
-        
+
+
         public List<ItemModel> GetAll()
         {
             return _service.GetAll().Select(item => new ItemModel(item)).ToList();

@@ -15,7 +15,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Adapters.LiteDB\Adapters.LiteDB.csproj" />
-      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using Domain;
 using ItemsWebApp.Models;
+using ItemService.Lib.Ports;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItemsWebApp.Controllers

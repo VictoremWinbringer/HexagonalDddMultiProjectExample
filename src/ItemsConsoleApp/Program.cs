@@ -1,39 +1,42 @@
 ﻿using System;
 using System.Linq;
 using Adapters.LiteDB;
-using Domain;
+using ItemService.Lib.Domain;
+using ItemService.Lib.Ports;
 using LiteDB;
 
 namespace ItemsConsoleApp
 {
-    class ConsolePort
+    internal class ConsoleController
     {
         private readonly IItemsService _service;
 
-        public ConsolePort(IItemsService service)
+        public ConsoleController(IItemsService service)
         {
             _service = service;
         }
+
         public void AddItem(string text)
         {
-            _service.Add(new ItemEntity(){ Text = text});
+            _service.Add(new Item(text));
         }
 
         public string ShowAll()
         {
-            return string.Join("\r\n",_service.GetAll().Select(item => item.Text));
+            return string.Join("\r\n",
+                _service.GetAll().Select(item => item.Text.Value));
         }
     }
-    
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var db = new LiteDatabase("Items.db");
             var repository = new ItemLiteDbRepository(db);
             var service = new ItemsService(repository);
-            var port = new ConsolePort(service);
-            
+            var port = new ConsoleController(service);
+
             while (true)
             {
                 Console.WriteLine("Current items");

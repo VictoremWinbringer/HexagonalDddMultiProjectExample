@@ -1,7 +1,8 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using ItemService.Lib.Domain;
 
-namespace ItemsWebApp.Models
+namespace ItemsService.Models
 {
     public class ItemModel
     {
@@ -10,6 +11,7 @@ namespace ItemsWebApp.Models
             Text = entity.Text.Value;
         }
 
+        [Obsolete("For serialization")]
         public ItemModel()
         {
         }
