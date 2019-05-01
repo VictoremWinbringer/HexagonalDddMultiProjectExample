@@ -1,2 +1,2 @@
 # HexagonalDddMultiProjectExample
-RPC, MongoDB, Sqlite
+RPC, Razor,MongoDB, LiteDB
